@@ -4,8 +4,8 @@ sudo apt-get install --assume-yes gnupg apt-utils gnupg2 curl gcc
 
 sudo apt-get update
 
-pyenv install 2.7.17
-pyenv local 2.7.17
+pyenv install 3.6.0
+pyenv local 3.6.0
 
 sudo apt-get install --assume-yes mysql-server-8.0
 
