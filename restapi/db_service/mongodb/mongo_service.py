@@ -1,5 +1,5 @@
 # from pymongo import MongoClient
-from pymongo_inmemory import MongoClient
+import mongomock
 import logging
 import json
 
@@ -25,7 +25,8 @@ class MongoDBClient:
 
         _logger.debug('connection url ' + connection_url)
         try:
-            MongoDBClient.client = MongoClient()
+            # MongoDBClient.client = MongoClient(connection_url)
+            MongoDBClient.client = mongomock.MongoClient()
         except Exception as e:
             _logger.error("Client setup failed as {}".format(e))
             client = None
