@@ -4,7 +4,7 @@ import logging
 import json
 
 _logger = logging.getLogger()
-
+mclient = mongomock.MongoClient()
 
 class MongoDBClient:
     client = None
@@ -26,14 +26,14 @@ class MongoDBClient:
         _logger.debug('connection url ' + connection_url)
         try:
             # MongoDBClient.client = MongoClient(connection_url)
-            MongoDBClient.client = mongomock.MongoClient()
+            MongoDBClient.client = mclient
         except Exception as e:
             _logger.error("Client setup failed as {}".format(e))
             client = None
 
-    def __del__(self):
-        if MongoDBClient.client is not None:
-            MongoDBClient.client.close()
+    # def __del__(self):
+    #     if MongoDBClient.client is not None:
+    #         MongoDBClient.client.close()
 
     def get(self, collection_name, qfilter=None, **kwargs):
         db = MongoDBClient.client[self.schema]
