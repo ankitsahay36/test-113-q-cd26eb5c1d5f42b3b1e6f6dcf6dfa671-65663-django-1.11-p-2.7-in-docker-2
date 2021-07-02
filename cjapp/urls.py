@@ -20,5 +20,12 @@ from restapi.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', index),
+]
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/', include('restapi.urls')),
 ]
